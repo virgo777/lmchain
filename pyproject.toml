@@ -1,0 +1,18 @@
+[project]
+name = "LMchain"
+version = "0.1.62"
+authors = [
+  { name="xiaohuaWang", email="5847713@qq.com" },
+]
+description = "A large language chain tools"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pypa/sampleproject"
+"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"

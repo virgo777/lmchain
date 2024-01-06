@@ -1,0 +1,2 @@
+recursive-include your_package_name *.py *.txt
+recursive-include another_folder *.csv
