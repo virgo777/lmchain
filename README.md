@@ -37,8 +37,25 @@ response = subQC.run(query=query)
 
 print(response)
 ```
+>3、调用大模型Embedding tool对文本进行嵌入embedding计算的方法
+```
+from lmchain.vectorstores import embeddings  # 导入embeddings模块
+embedding_tool = embeddings.GLMEmbedding()  # 创建一个GLMEmbedding对象
+embedding_tool.zhipuai.api_key = "1f565e40af1198e11ff1fd8a5b42771d.SjNfezc40YFsz2KC" #你个人注册可正常使用的API KEY
 
->3、目前lmchain还提供了对工具函数的调用方法
+inputs = ["lmchain还有对复杂任务拆解的功能", "目前lmchain还提供了对工具函数的调用方法", "Lmchain是专用为中国大陆用户提供免费大模型服务的工具包"] * 50
+
+#由于此时对embedding的处理，对原始传入的文本顺序做了变更，
+# 因此需要采用新的文本list排序
+aembeddings,atexts = (embedding_tool.aembed_documents(inputs))
+print(aembeddings)
+
+#每条文本内容被embedding处理为[1,1024]大小的序列
+import numpy as np
+aembeddings = (np.array(aembeddings))
+print(aembeddings.shape)
+```
+>4、目前lmchain还提供了对工具函数的调用方法
 ```
 from lmchain.agents import llmMultiAgent
 llm = llmMultiAgent.AgentZhipuAI()
@@ -52,7 +69,7 @@ response = tool_chain.run(query)
 print(response)
 ```
 
->4、添加自定义工具并调用的方法
+>5、添加自定义工具并调用的方法
 ```
 from lmchain.agents import llmMultiAgent
 llm = llmMultiAgent.AgentZhipuAI()
@@ -84,24 +101,7 @@ result = tool_chain.run(query)
 print(result)
 
 ```
->5、调用大模型Embedding tool对文本进行嵌入embedding计算的方法
-```
-from lmchain.vectorstores import embeddings  # 导入embeddings模块
-embedding_tool = embeddings.GLMEmbedding()  # 创建一个GLMEmbedding对象
-embedding_tool.zhipuai.api_key = "1f565e40af1198e11ff1fd8a5b42771d.SjNfezc40YFsz2KC" #你个人注册可正常使用的API KEY
-
-inputs = ["lmchain还有对复杂任务拆解的功能", "目前lmchain还提供了对工具函数的调用方法", "Lmchain是专用为中国大陆用户提供免费大模型服务的工具包"] * 50
-
-#由于此时对embedding的处理，对原始传入的文本顺序做了变更，
-# 因此需要采用新的文本list排序
-aembeddings,atexts = (embedding_tool.aembed_documents(inputs))
-print(aembeddings)
-
-#每条文本内容被embedding处理为[1,1024]大小的序列
-import numpy as np
-aembeddings = (np.array(aembeddings))
-print(aembeddings.shape)
-```
+其他功能正在陆续添加中，欢迎读者留下您的意见或与作者联系。
 
 
 
