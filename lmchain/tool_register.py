@@ -121,7 +121,7 @@ def get_tools() -> dict:
 #     else:
 #         return "未查询相关内容"
 #
-#
+##
 # @register_tool
 # def get_random_fun(location: Annotated[str, "随机参数", True] = ""):
 #     """编写的一个混淆随机函数"""
