@@ -1,4 +1,4 @@
-LMchain is a toolkit specifically adapted for chinese large model chains.
+LMchain is a toolkit specifically adapted for chinese large model chains
 
 Lmchain是专用为中国大陆用户提供免费大模型服务的工具包，目前免费推荐使用chatGLM。
 
